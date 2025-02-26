@@ -43,10 +43,15 @@ def buildWindow():
     TK.Checkbutton(button_Frm, text="Quick Sort", variable=quickSort).grid(column=3, row= 5)
     TK.Checkbutton(button_Frm, text="Bubble Sort", variable=bubbSort).grid(column=4, row= 5)
     TK.Checkbutton(button_Frm, text="Merge Sort", variable=mergeSort).grid(column=5, row= 5)
+
+    arrayPrompt = TK.Label(button_Frm,height=1,width=20,text="Input Size of Array Here: ")
+    arrayPrompt.grid(column=1,row=2)
+    randArray_Size = TK.Text(button_Frm, height=1, width=8)
+    randArray_Size.grid(column=2, row=2)
     
     
     # TK.Text(frm).grid(column=3,row=2)
-    array = TK.Text(entry_Frm, height=1, width=20, wrap="word")
+    array = TK.Text(entry_Frm, height=1, width=50, wrap="word")
     array.pack(side="left", fill="both", expand=True, padx=50, pady=100)
     
     # Scrollbar
