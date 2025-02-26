@@ -1,6 +1,12 @@
 import time
 import random
 
+
+def generate_random_array(length):
+    # Random array generator for if user wants to automatically generate an array
+    random_array = [random.randint(1, 9999) for _ in range(length)]
+    return random_array
+
 def linearSearch(L,T):
     indices = []
 
