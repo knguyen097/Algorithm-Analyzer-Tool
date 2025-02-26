@@ -13,6 +13,7 @@ def buildWindow():
     frm.grid_columnconfigure(0, weight=1)
     window.title("Time Complexity Evaluator")
     TK.Button(frm, text="Quit", command=window.destroy).grid(column=3, row=9)
+    TK.Button(frm, text="Start!",command=window.destroy).grid(column=6, row=5) # window.destroy needs to change so that it starts the algorithmn checking
 
     linSearch = TK.BooleanVar(value=False)
     radSort = TK.BooleanVar(value=False)
