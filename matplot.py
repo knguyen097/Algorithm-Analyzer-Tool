@@ -1,33 +1,31 @@
 import algorithm
+import time
+import random  
 import UI_file
 
-    amtInput = #user input from UI_FILE
-    execution_times = []
-    num_students = amtInput // 3
-    students = [(f"Student{i}", random.randint(amtInput)) for i in range(num_students)]
-    execution_times.append(measure_time(bubble_sort, students))
+# Ensure amtInput is defined before use
+amtInput = 10000  # Will be changed into the array that is created from random integers based on user input
 
-    cards = [random.randint(amtInput) for _ in range(amtInput // 3)]
-    execution_times.append(measure_time(insertion_sort, cards))
+execution_times = []
+num_students = amtInput // 3
+students = [(f"Student{i}", random.randint(1, amtInput)) for i in range(num_students)]
+execution_times.insert(0, algorithm.measure_time(algorithm.bubble_sort, students))
 
-    arr = [random.randint(amtInput) for _ in range(amtInput // 3)]
-    execution_times.append(measure_time(merge_sort, arr))
+# Merge Sort Time
+arr = [random.randint(1, amtInput) for _ in range(amtInput // 3)]
+execution_times.insert(1, algorithm.measure_time(algorithm.merge_sort, arr))
 
-    arr = [random.randint(amtInput) for _ in range(amtInput // 3)]
-    start_time = time.time()
-    quick_sort(arr)
-    execution_times.append(time.time() - start_time)
+# Quick Sort Time
+start_time = time.time()
+arr[:] = algorithm.quick_sort(arr)
+execution_times.insert(2, (time.time() - start_time))
 
-    num_books = amtInput // 3
-    books = [(f"Book{i}", random.randint(amtInput)) for i in range(num_books)]
-    execution_times.append(measure_time(selection_sort, books))
+# LSD Radix Sort
+execution_times.insert(3, algorithm.measure_time(algorithm.lsd_radix_sort, arr))
 
-    arr = [random.randint(amtInput) for _ in range(amtInput // 3)]
-    execution_times.append(measure_time(lsd_radix_sort, arr))
-    arr = [random.randint(amtInput) for _ in range(amtInput // 3)]
-    start_time = time.time()
-    msd_radix_sort(arr)
-    execution_times.append(time.time() - start_time)
-    
-    for item in execution_times:
-        print(item)
+# MSD Radix Sort
+start_time = time.time()
+algorithm.msd_radix_sort(arr)
+execution_times.insert(4, (time.time() - start_time))
+
+print(execution_times[2])
