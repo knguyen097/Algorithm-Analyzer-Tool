@@ -1,6 +1,10 @@
 import time
 import random
 
+def generate_random_array(length):
+    random_array = [random.randint(1, 9999) for _ in range(length)]
+    return random_array
+
 def measure_time(sort_function, data, *args):
     start_time = time.time()
     sort_function(data, *args)
