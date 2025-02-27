@@ -1,6 +1,7 @@
 import tkinter as TK
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter import simpledialog
 import algorithm  
 
 sorting_algorithms = {}
@@ -26,10 +27,29 @@ def displayArray():
 
 def startProgram():
     array_content = array.get("1.0", TK.END).strip()
-
+  
+    try:
+        array_list = list(map(int, array_content.split(", "))) if array_content else []
+    except ValueError:
+        messagebox.showerror("Error", "Invalid array format. Please generate a new array.")
+        return
+    
     array_list = list(map(int, array_content.split(", "))) if array_content else []
 
     selected_algorithms = [algo for algo, var in sorting_algorithms.items() if var.get()]
+
+    search_value = None
+    if "Linear Search" in selected_algorithms:
+        search_input = simpledialog.askstring("Input", "Enter the number to search for:")
+        if search_input is None:  # User clicked "Cancel"
+            messagebox.showwarning("Canceled", "Search operation was canceled.")
+            return
+        try:
+            search_value = int(search_input)  # Convert input to integer
+        except ValueError:
+            messagebox.showerror("Input Error", "Please enter a valid integer.")
+            return
+    messagebox.showinfo("Success", f"Starting with array: {array_list} and algorithms: {selected_algorithms}\nSearch Value: {search_value if search_value is not None else 'N/A'}")
 
 def buildWindow():
     global randArray_Size, array  
