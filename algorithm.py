@@ -1,13 +1,13 @@
 import time
 import random
 
+def measure_time(sort_function, data, *args):
+    start_time = time.time()
+    sort_function(data, *args)
+    end_time = time.time()
+    return end_time - start_time
 
-def generate_random_array(length):
-    # Random array generator for if user wants to automatically generate an array
-    random_array = [random.randint(1, 9999) for _ in range(length)]
-    return random_array
-
-def linearSearch(L,T):
+def linear_search_all(L,T):
     indices = []
 
     for index in range(len(L)):
@@ -15,27 +15,12 @@ def linearSearch(L,T):
             indices.append(index)
     return indices
 
-def measure_time(sort_function, data, *args):
-    start_time = time.time()
-    sort_function(data, *args)
-    end_time = time.time()
-    return end_time - start_time
-
 def bubble_sort(students):
     n = len(students)
     for i in range(n):
         for j in range(0, n - i - 1):
             if students[j][1] > students[j + 1][1]:
                 students[j], students[j + 1] = students[j + 1], students[j]
-
-def insertion_sort(cards):
-    for i in range(1, len(cards)):
-        key = cards[i]
-        j = i - 1
-        while j >= 0 and key < cards[j]:
-            cards[j + 1] = cards[j]
-            j -= 1
-        cards[j + 1] = key
 
 def merge_sort(arr):
     if len(arr) > 1:
@@ -70,15 +55,6 @@ def quick_sort(arr):
     middle = [x for x in arr if x == pivot]
     right = [x for x in arr if x > pivot]
     return quick_sort(left) + middle + quick_sort(right)
-
-def selection_sort(books):
-    n = len(books)
-    for i in range(n):
-        min_index = i
-        for j in range(i + 1, n):
-            if books[j][1] < books[min_index][1]:
-                min_index = j
-        books[i], books[min_index] = books[min_index], books[i]
 
 def counting_sort(arr, exp):
     n = len(arr)
