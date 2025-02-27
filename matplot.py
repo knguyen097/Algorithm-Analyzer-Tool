@@ -1,11 +1,12 @@
 import algorithm
 import time
-import random  
+import random
 import UI_file
 
 # Ensure amtInput is defined before use
-amtInput = 10000  # Will be changed into the array that is created from random integers based on user input
+amtInput = 1000  # Will be changed into the array that is created from random integers based on user input
 
+# Bubble Sort Time
 execution_times = []
 num_students = amtInput // 3
 students = [(f"Student{i}", random.randint(1, amtInput)) for i in range(num_students)]
@@ -28,4 +29,8 @@ start_time = time.time()
 algorithm.msd_radix_sort(arr)
 execution_times.insert(4, (time.time() - start_time))
 
-print(execution_times[2])
+# Linear Search Sort Time
+# if checkButton = true 
+# Run Time Measurement for Linear Search
+# By calling Linear Search Method from algorithm.py
+# Then insert execution time in execution_times array in position 5
