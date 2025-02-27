@@ -15,15 +15,15 @@ def generateArray(size):
         return []
 
 def displayArray():
-    size = randArray_Size.get("1.0", TK.END).strip()  # Get user input size
-    arrayInput = generateArray(size)  # Generate array using input size
+    size = randArray_Size.get("1.0", TK.END).strip()  
+    arrayInput = generateArray(size)  
     
-    if arrayInput:  # If valid array generated
-        array.delete("1.0", TK.END)  # Clear previous content
-        array.insert(TK.END, ', '.join(map(str, arrayInput)))  # Insert formatted array
+    if arrayInput: 
+        array.delete("1.0", TK.END)  
+        array.insert(TK.END, ', '.join(map(str, arrayInput)))
 
 def buildWindow():
-    global randArray_Size, array  # Declare global for access in displayArray
+    global randArray_Size, array  
 
     window = TK.Tk()
     window.geometry("793x393")
