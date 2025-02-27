@@ -8,11 +8,11 @@ sorting_algorithms = {}
 
 def generateArray(size):
     try:
-        size = int(size)  # Convert input size to integer
+        size = int(size)  
         if size <= 0:
             messagebox.showerror("Input Error", "Please enter a positive integer.")
             return []
-        return algorithm.generate_random_array(size)  # Call function properly
+        return algorithm.generate_random_array(size)  
     except ValueError:
         messagebox.showerror("Input Error", "Please enter a valid integer.")
         return []
