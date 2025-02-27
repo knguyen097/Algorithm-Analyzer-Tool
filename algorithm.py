@@ -1,9 +1,21 @@
 import time
 import random
 
+
 def generate_random_array(length):
     random_array = [random.randint(1, 9999) for _ in range(length)]
     return random_array
+
+def run_Analysis(array_List, selected_Algos, search_Value): # run the draw charts from here 
+    for algo in selected_Algos:
+        match algo:
+            case "Linear Search" : linear_search_all(array_List[:], search_Value)
+            case "Bubble Sort" : bubble_sort(array_List[:])
+            case "Merge Sort" : merge_sort(array_List[:])
+            case "Quick Sort" : quick_sort(array_List[:])
+            case "Radix Sort": 
+                lsd_radix_sort(array_List[:])
+                msd_radix_sort(array_List[:])
 
 def measure_time(sort_function, data, *args):
     start_time = time.time()

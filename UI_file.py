@@ -41,15 +41,15 @@ def startProgram():
     search_value = None
     if "Linear Search" in selected_algorithms:
         search_input = simpledialog.askstring("Input", "Enter the number to search for:")
-        if search_input is None:  # User clicked "Cancel"
+        if search_input is None:  
             messagebox.showwarning("Canceled", "Search operation was canceled.")
             return
         try:
-            search_value = int(search_input)  # Convert input to integer
+            search_value = int(search_input)  
         except ValueError:
             messagebox.showerror("Input Error", "Please enter a valid integer.")
             return
-    messagebox.showinfo("Success", f"Starting with array: {array_list} and algorithms: {selected_algorithms}\nSearch Value: {search_value if search_value is not None else 'N/A'}")
+    messagebox.showinfo("Success", f"Starting with array: {array_list} and algorithms: {selected_algorithms}")
 
 def buildWindow():
     global randArray_Size, array  
