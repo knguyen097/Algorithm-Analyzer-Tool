@@ -1,7 +1,9 @@
 import tkinter as TK
 from tkinter import ttk
 from tkinter import messagebox
-import algorithm  # Ensure algorithm.py contains generate_random_array(size)
+import algorithm  
+
+sorting_algorithms = {}
 
 def generateArray(size):
     try:
@@ -22,6 +24,13 @@ def displayArray():
         array.delete("1.0", TK.END)  
         array.insert(TK.END, ', '.join(map(str, arrayInput)))
 
+def startProgram():
+    array_content = array.get("1.0", TK.END).strip()
+
+    array_list = list(map(int, array_content.split(", "))) if array_content else []
+
+    selected_algorithms = [algo for algo, var in sorting_algorithms.items() if var.get()]
+
 def buildWindow():
     global randArray_Size, array  
 
@@ -41,28 +50,34 @@ def buildWindow():
     quit_Button = TK.Button(button_Frm, text="Quit", command=window.destroy)
     quit_Button.grid(column=3, row=9)
 
-    start_Button = TK.Button(button_Frm, text="Start!", command=window.destroy)
+    start_Button = TK.Button(button_Frm, text="Start!", command=startProgram)
     start_Button.grid(column=6, row=5) 
 
     create_RandArray = TK.Button(button_Frm, text="Generate Random Array", command=displayArray)
     create_RandArray.grid(column=3, row=2)
 
     # Sorting algorithm checkboxes
+
+    sorting_algorithms["Linear Search"] = TK.BooleanVar(value=False)
+    sorting_algorithms["Radix Sort"] = TK.BooleanVar(value=False)
+    sorting_algorithms["Quick Sort"] = TK.BooleanVar(value=False)
+    sorting_algorithms["Bubble Sort"] = TK.BooleanVar(value=False)
+    sorting_algorithms["Merge Sort"] = TK.BooleanVar(value=False)
     mergeSort = TK.BooleanVar(value=False)
 
-    linSearch = TK.Checkbutton(button_Frm, text="Linear Search", variable=False)
+    linSearch = TK.Checkbutton(button_Frm, text="Linear Search", variable=sorting_algorithms["Linear Search"])
     linSearch.grid(column=1, row=5)
 
-    radSort = TK.Checkbutton(button_Frm, text="Radix Sort", variable=False)
+    radSort = TK.Checkbutton(button_Frm, text="Radix Sort", variable=sorting_algorithms["Radix Sort"])
     radSort.grid(column=2, row=5)
 
-    quickSort = TK.Checkbutton(button_Frm, text="Quick Sort", variable=False)
+    quickSort = TK.Checkbutton(button_Frm, text="Quick Sort", variable=sorting_algorithms["Quick Sort"])
     quickSort.grid(column=3, row=5)
 
-    bubbSort = TK.Checkbutton(button_Frm, text="Bubble Sort", variable=False)
+    bubbSort = TK.Checkbutton(button_Frm, text="Bubble Sort", variable=sorting_algorithms["Bubble Sort"])
     bubbSort.grid(column=4, row=5)
 
-    mergeSort = TK.Checkbutton(button_Frm, text="Merge Sort", variable=mergeSort)
+    mergeSort = TK.Checkbutton(button_Frm, text="Merge Sort", variable=sorting_algorithms["Merge Sort"])
     mergeSort.grid(column=5, row=5)
 
     # Input field for array size
@@ -83,4 +98,4 @@ def buildWindow():
 
     window.mainloop()
 
-buildWindow()
+
