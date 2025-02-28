@@ -29,7 +29,11 @@ def buildDisplay(selectedAlgos, executionTimes):
 
     # Create figure and axis
     fig, ax = plt.subplots(figsize=(8, 5))
-    plt.subplots_adjust(bottom=0.2)  # Adjust space for buttons
+    plt.subplots_adjust(left=0.2,bottom=0.2)  # Adjust space for buttons
+
+    #Custom Background Color
+    fig.patch.set_facecolor("#1e1e2f")
+    ax.set_facecolor("#2a2a3a")
 
     # Initialize bar chart with zero values
     values = np.zeros_like(final_values, dtype=float)
@@ -41,9 +45,14 @@ def buildDisplay(selectedAlgos, executionTimes):
 
     # Set axis labels and limits
     ax.set_xlim(0, max(final_values) * 1.2)
-    ax.set_xlabel('Execution Time')
-    ax.set_ylabel('Sorting Algorithms')
-    ax.set_title('Execution Time Comparison for Sorting Algorithms')
+    ax.set_xlabel('Execution Time', color="white")
+    ax.set_ylabel('Sorting Algorithms', color="white")
+    ax.set_title('Execution Time Comparison for Sorting Algorithms', color="white")
+
+    #Change Tick Label to White
+    ax.tick_params(axis='x', colors="white")
+    ax.tick_params(axis='y', colors="white")
+
     showPlot()
 
     

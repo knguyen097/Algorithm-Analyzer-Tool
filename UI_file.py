@@ -57,25 +57,39 @@ def buildWindow():
     global randArray_Size, array  
 
     window = TK.Tk()
-    window.geometry("793x393")
+    window.geometry("793x480")
     window.title("Time Complexity Evaluator")
+    window.configure(background="#1e1e2f")
+
+    title_label = TK.Label(window, text="Algorithm Analyzer Tool", font=("Arial", 20, "bold"), bg="#1e1e2f", fg="white")
+    title_label.pack(pady=5)
+
+    description_label = TK.Label(window, text="Visualize Sorting Algorithm Runtimes", font=("Arial", 12, "bold", "italic"), bg="#1e1e2f", fg="white")
+    description_label.pack(pady=5)
+
+    generatedArray_Label = TK.Label(window, text="\n\nCurrent Generated Array: ", font=("Arial", 16, "bold", "underline"), bg="#1e1e2f", fg="white")
+    generatedArray_Label.pack()
+
+
+    style = ttk.Style()
+    style.configure("Custom.TFrame", background="#1e1e2f")
 
     # Framing for entry fields 
-    entry_Frm = ttk.Frame(window)
+    entry_Frm = ttk.Frame(window, style="Custom.TFrame")
     entry_Frm.pack(fill="both", expand=True, padx=5, pady=5)
 
     # Framing for buttons
-    button_Frm = ttk.Frame(window, padding=10, borderwidth=5, relief="ridge")
+    button_Frm = ttk.Frame(window, padding=10, borderwidth=5, relief="ridge", style="Custom.TFrame")
     button_Frm.pack()
     
     # Buttons of GUI
-    quit_Button = TK.Button(button_Frm, text="Quit", command=window.destroy)
+    quit_Button = TK.Button(button_Frm, text="Quit", command=window.destroy, background="#3d3d62", fg="white")
     quit_Button.grid(column=3, row=9)
 
-    start_Button = TK.Button(button_Frm, text="Start!", command=startProgram)
-    start_Button.grid(column=6, row=5) 
+    start_Button = TK.Button(button_Frm, text="Start!", command=startProgram, background="#3d3d62", fg="white")
+    start_Button.grid(column=2, row=9) 
 
-    create_RandArray = TK.Button(button_Frm, text="Generate Random Array", command=displayArray)
+    create_RandArray = TK.Button(button_Frm, text="Generate Random Array", command=displayArray, background="#3d3d62", fg="white")
     create_RandArray.grid(column=3, row=2)
 
     # Sorting algorithm checkboxes
@@ -87,31 +101,31 @@ def buildWindow():
     sorting_algorithms["Merge Sort"] = TK.BooleanVar(value=False)
     mergeSort = TK.BooleanVar(value=False)
 
-    linSearch = TK.Checkbutton(button_Frm, text="Linear Search", variable=sorting_algorithms["Linear Search"])
+    linSearch = TK.Checkbutton(button_Frm, text="Linear Search", variable=sorting_algorithms["Linear Search"], background="#1e1e2f", fg="white", selectcolor="#1e1e2f", activebackground="#1e1e2f")
     linSearch.grid(column=1, row=5)
 
-    radSort = TK.Checkbutton(button_Frm, text="Radix Sort", variable=sorting_algorithms["Radix Sort"])
+    radSort = TK.Checkbutton(button_Frm, text="Radix Sort", variable=sorting_algorithms["Radix Sort"], background="#1e1e2f", fg="white", selectcolor="#1e1e2f", activebackground="#1e1e2f")
     radSort.grid(column=2, row=5)
 
-    quickSort = TK.Checkbutton(button_Frm, text="Quick Sort", variable=sorting_algorithms["Quick Sort"])
+    quickSort = TK.Checkbutton(button_Frm, text="Quick Sort", variable=sorting_algorithms["Quick Sort"], background="#1e1e2f", fg="white", selectcolor="#1e1e2f", activebackground="#1e1e2f")
     quickSort.grid(column=3, row=5)
 
-    bubbSort = TK.Checkbutton(button_Frm, text="Bubble Sort", variable=sorting_algorithms["Bubble Sort"])
+    bubbSort = TK.Checkbutton(button_Frm, text="Bubble Sort", variable=sorting_algorithms["Bubble Sort"], background="#1e1e2f", fg="white", selectcolor="#1e1e2f", activebackground="#1e1e2f")
     bubbSort.grid(column=4, row=5)
 
-    mergeSort = TK.Checkbutton(button_Frm, text="Merge Sort", variable=sorting_algorithms["Merge Sort"])
+    mergeSort = TK.Checkbutton(button_Frm, text="Merge Sort", variable=sorting_algorithms["Merge Sort"], background="#1e1e2f", fg="white", selectcolor="#1e1e2f", activebackground="#1e1e2f")
     mergeSort.grid(column=5, row=5)
 
     # Input field for array size
-    arrayPrompt = TK.Label(button_Frm, height=1, width=20, text="Input Size of Array Here:")
+    arrayPrompt = TK.Label(button_Frm, height=1, width=20, text="Input Size of Array Here:", bg="#1e1e2f", fg="white")
     arrayPrompt.grid(column=1, row=2)
 
-    randArray_Size = TK.Text(button_Frm, height=1, width=8)
+    randArray_Size = TK.Text(button_Frm, height=1, width=8, bg="black", fg="white", insertbackground="white")
     randArray_Size.grid(column=2, row=2)
 
     # Text widget to display generated array
-    array = TK.Text(entry_Frm, height=1, width=50, wrap="word")
-    array.pack(side="left", fill="both", expand=True, padx=50, pady=100)
+    array = TK.Text(entry_Frm, height=1, width=50, wrap="word", bg="black", fg="white", insertbackground="white")
+    array.pack(side="left", fill="both", expand=True, padx=50, pady=25)
     
     # Scrollbar
     scrollbar = TK.Scrollbar(entry_Frm, command=array.yview)
