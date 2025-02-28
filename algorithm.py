@@ -10,7 +10,6 @@ def generate_random_array(length):
 def run_Analysis(array_List, selected_Algos, search_Value): # run the draw charts from here 
     sortment_Time = []
     
-    UI_file.errorMessage(selected_Algos)
 
     for algo in selected_Algos:
         match algo:
@@ -50,7 +49,8 @@ def run_Analysis(array_List, selected_Algos, search_Value): # run the draw chart
                 merge_sort(array_List[:])
                 eTime = time.time()
                 sortment_Time.append(eTime - sTime)
-    
+        UI_file.errorMessage(selected_Algos, sortment_Time)
+
     graphDisplay.buildDisplay(selected_Algos, sortment_Time)
 
 
@@ -62,10 +62,10 @@ def measure_time(sort_function, data, *args):
     return end_time - start_time
 
 def linear_search_all(L,T):
-    indices = []
-    for index in range(len(L)):
-        if L[index] == T:
-            indices.append(index)
+    for num in L:
+        if num == T:
+            return
+        return
 
 
 def bubble_sort(numbers):

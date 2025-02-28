@@ -6,9 +6,6 @@ import algorithm
 
 sorting_algorithms = {}
 
-def errorMessage(arrays):
-    messagebox.showinfo("Order of arrays", f"Here is the list of arrays: {arrays}")
-
 def generateArray(size):
     try:
         size = int(size)  

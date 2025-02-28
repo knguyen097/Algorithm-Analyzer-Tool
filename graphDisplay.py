@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.animation as animation
 from matplotlib.widgets import Button
-import matplot  # Import execution_times from matplot.py
 import random
 
 
