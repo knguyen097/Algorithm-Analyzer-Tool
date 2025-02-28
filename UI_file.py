@@ -6,6 +6,9 @@ import algorithm
 
 sorting_algorithms = {}
 
+def errorMessage(arrays):
+    messagebox.showinfo("Order of arrays", f"Here is the list of arrays: {arrays}")
+
 def generateArray(size):
     try:
         size = int(size)  
@@ -49,7 +52,9 @@ def startProgram():
         except ValueError:
             messagebox.showerror("Input Error", "Please enter a valid integer.")
             return
-    messagebox.showinfo("Success", f"Starting with array: {array_list} and algorithms: {selected_algorithms}")
+    search_input = 0
+
+    algorithm.run_Analysis(array_list, selected_algorithms, search_input)
 
 def buildWindow():
     global randArray_Size, array  

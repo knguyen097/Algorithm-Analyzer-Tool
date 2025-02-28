@@ -1,21 +1,59 @@
 import time
 import random
-
+import graphDisplay
+import UI_file
 
 def generate_random_array(length):
     random_array = [random.randint(1, 9999) for _ in range(length)]
     return random_array
 
 def run_Analysis(array_List, selected_Algos, search_Value): # run the draw charts from here 
+    sortment_Time = []
+    
+    UI_file.errorMessage(selected_Algos)
+
     for algo in selected_Algos:
         match algo:
-            case "Linear Search" : linear_search_all(array_List[:], search_Value)
-            case "Bubble Sort" : bubble_sort(array_List[:])
-            case "Merge Sort" : merge_sort(array_List[:])
-            case "Quick Sort" : quick_sort(array_List[:])
-            case "Radix Sort": 
+            case "Linear Search": 
+                sTime = time.time()
+                linear_search_all(array_List[:], search_Value)
+                eTime = time.time()
+                sortment_Time.append(eTime - sTime)
+            case "Radix Sort":
+
+                index = selected_Algos.index("Radix Sort")
+                selected_Algos[index] = "LSD Radix Sort"
+                selected_Algos.insert(index + 1, "MSD Radix Sort")
+
+                sTime = time.time() 
                 lsd_radix_sort(array_List[:])
+                eTime = time.time()
+                sortment_Time.append(eTime - sTime)
+
+                
+                sTime = time.time()
                 msd_radix_sort(array_List[:])
+                eTime = time.time()
+                sortment_Time.append(eTime - sTime)       
+            case "Quick Sort" : 
+                sTime = time.time()
+                quick_sort(array_List[:]) 
+                eTime = time.time()
+                sortment_Time.append(eTime - sTime)           
+            case "Bubble Sort" :
+                sTime = time.time()
+                bubble_sort(array_List[:])
+                eTime = time.time()
+                sortment_Time.append(eTime - sTime)
+            case "Merge Sort": 
+                sTime = time.time()
+                merge_sort(array_List[:])
+                eTime = time.time()
+                sortment_Time.append(eTime - sTime)
+    
+    graphDisplay.buildDisplay(selected_Algos, sortment_Time)
+
+
 
 def measure_time(sort_function, data, *args):
     start_time = time.time()
@@ -25,18 +63,19 @@ def measure_time(sort_function, data, *args):
 
 def linear_search_all(L,T):
     indices = []
-
     for index in range(len(L)):
         if L[index] == T:
             indices.append(index)
-    return indices
 
-def bubble_sort(students):
-    n = len(students)
+
+def bubble_sort(numbers):
+    n = len(numbers)
     for i in range(n):
         for j in range(0, n - i - 1):
-            if students[j][1] > students[j + 1][1]:
-                students[j], students[j + 1] = students[j + 1], students[j]
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+
+
 
 def merge_sort(arr):
     if len(arr) > 1:
