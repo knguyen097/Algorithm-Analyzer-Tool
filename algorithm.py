@@ -49,7 +49,7 @@ def run_Analysis(array_List, selected_Algos, search_Value): # run the draw chart
                 merge_sort(array_List[:])
                 eTime = time.time()
                 sortment_Time.append(eTime - sTime)
-        UI_file.errorMessage(selected_Algos, sortment_Time)
+ 
 
     graphDisplay.buildDisplay(selected_Algos, sortment_Time)
 
