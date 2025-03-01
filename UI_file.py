@@ -27,6 +27,7 @@ def displayArray():
 
 def startProgram():
     array_content = array.get("1.0", TK.END).strip()
+    search_input = 0
   
     try:
         array_list = list(map(int, array_content.split(", "))) if array_content else []
@@ -49,7 +50,6 @@ def startProgram():
         except ValueError:
             messagebox.showerror("Input Error", "Please enter a valid integer.")
             return
-    search_input = 0
 
     algorithm.run_Analysis(array_list, selected_algorithms, search_input)
 

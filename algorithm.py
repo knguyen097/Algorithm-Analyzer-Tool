@@ -2,6 +2,7 @@ import time
 import random
 import graphDisplay
 import UI_file
+from tkinter import messagebox
 
 def generate_random_array(length):
     random_array = [random.randint(1, 9999) for _ in range(length)]
@@ -62,10 +63,10 @@ def measure_time(sort_function, data, *args):
     return end_time - start_time
 
 def linear_search_all(L,T):
-    for num in L:
-        if num == T:
+    for num in range(len(L)):
+        if L[num] == T:
             return
-        return
+    return
 
 
 def bubble_sort(numbers):
