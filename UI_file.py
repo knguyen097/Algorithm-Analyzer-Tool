@@ -27,7 +27,6 @@ def displayArray():
 
 def startProgram():
     array_content = array.get("1.0", TK.END).strip()
-    search_input = 0
   
     try:
         array_list = list(map(int, array_content.split(", "))) if array_content else []
@@ -40,6 +39,7 @@ def startProgram():
     selected_algorithms = [algo for algo, var in sorting_algorithms.items() if var.get()]
 
     search_value = None
+    search_input = 0
     if "Linear Search" in selected_algorithms:
         search_input = simpledialog.askstring("Input", "Enter the number to search for:")
         if search_input is None:  
@@ -60,6 +60,14 @@ def buildWindow():
     window.geometry("793x480")
     window.title("Time Complexity Evaluator")
     window.configure(background="#1e1e2f")
+
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    x = (screen_width // 2) - (793 // 2)
+    y = (screen_height // 2) - (480 // 2)
+
+    window.geometry(f"{793}x{480}+{x}+{y}")
 
     title_label = TK.Label(window, text="Algorithm Analyzer Tool", font=("Arial", 20, "bold"), bg="#1e1e2f", fg="white")
     title_label.pack(pady=5)
